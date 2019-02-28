@@ -3,19 +3,7 @@ IEC61850 MMS(Manufacturing Message Specification)
 """
 
 from __future__ import print_function
-from scapy.packet import bind_layers, bind_bottom_up
-from scapy.asn1packet import ASN1_Packet
-from scapy.asn1fileds import ASN1F_INTEGER, ASN1F_IPADDRESS, ASN1F_OID, \
-        ASN1F_SEQUENCE, ASN1F_SEQUENCE_OF, ASN1F_STRING, ASN1F_TIME_TICKS, \
-        ASN1F_enum_INTEGER, ASN1F_filed, ASN1F_SEQUENCE
-from scapy.asn1.asn1 import ASN1_Class_UNIVERSAL, ASN1_Codecs, ASN1_NULL, \
-        ASN1_SEQUENCE
-from scapy.asn1.ber import BERcodec_SEQUENCE
-from scapy.sendrecv import sr1
-from scapy.volatile import RandSHort, IntAutoTIme
-from scapy.layers.inet import UDP, IP, ICMP
-
-from scapy.asn1.mib impot conf
+from scapy.all import *
 
 ################
 # IEC61850 MMS #
@@ -1302,7 +1290,7 @@ class BERcodec_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(BERcodec_SEQUENCE):
 
 	
 	
-
+'''
 # [ASN1F fileds] #
 #MmsPdu
 class ASN1F_CONFIRMED_REQUEST_PDU(ASN1F_SEQUENCE):
@@ -2715,3 +2703,4 @@ class MMS(ASN1_Packet):
             MMSconfirmed_request, MMSconfirmed_response, MMSunconfirmed,
             MMSinitiate_request, MMSinitiate_response, MMSinitiate_error)
 
+'''
