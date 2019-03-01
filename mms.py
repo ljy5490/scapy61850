@@ -1812,60 +1812,6 @@ class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE_OF):
 	
 	
 # [MMS packet] #
-#MmsPdu
-class MMSconfirmed_request_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_CONFIRMED_REQUEST_PDU(ASN1F_INTEGER("invokeID", 0),
-		ASN1F_CHOICE("confirmedSerivceRequest",
-			MMSget_name_list_request(),
-			MMSget_name_list_request,
-			MMSread_request,
-			MMSwrite_request,
-			MMSget_variable_access_attributes_request,
-			MMSdefine_named_variable_list_request,
-			MMSget_named_variable_list_attributes_request,
-			MMSdelete_named_variable_list_request))
-
-class MMSconfirmed_response_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_CONFIRMED_RESPONSE_PDU(ASN1F_INTEGER("invokeID"),
-											ASN1F_CHOICE("confirmedSerivceResponse", 
-															MMSget_name_list_response(),
-															MMSget_name_list_response, 
-															MMSread_response, 
-															MMSwrite_response, 
-															MMSget_variable_access_attributes_response, 
-															MMSdefine_named_variable_list_response, 
-															MMSget_named_variable_list_attributes_response, 
-															MMSdelete_named_variable_list_response))
-
-class MMSunconfirmed_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_UNCONFIRMED_PDU(ASN1F_CHOICE("informationReport", 
-													MMSinformation_report(),
-													MMSinformation_report))
-
-class MMSinitiate_request_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_INITIATE_REQUEST_PDU(MMSlocal_detail_calling(),
-											MMSproposed_max_serv_outstanding_calling(),
-											MMSproposed_max_serv_outstanding_called(),
-											MMSproposed_data_structure_nesting_level(),
-											MMSmms_init_request_detail())
-
-class MMSinitiate_response_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_INITIATE_RESPONSE_PDU(MMSlocal_detail_called(),
-											MMSnegotiated_max_serv_outstanding_calling(),
-											MMSnegotiated_max_serv_outstanding_called(),
-											MMSnegotiated_data_structure_nesting_level(),
-											MMSmms_init_response_detail())
-
-class MMSinitiate_error_pdu(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_INITIATE_ERROR_PDU(MMSerror_class(),
-											MMSadditional_code(),
-											MMSadditional_description())
 
 #UnconfirmedService
 class MMSinformation_report(ASN1_Packet):
@@ -2760,6 +2706,60 @@ class MMSscattered_access_description_alternate_access(ASN1_Packet):
 
 
 
+#MmsPdu
+class MMSconfirmed_request_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_CONFIRMED_REQUEST_PDU(ASN1F_INTEGER("invokeID", 0),
+		ASN1F_CHOICE("confirmedSerivceRequest",
+			MMSget_name_list_request(),
+			MMSget_name_list_request,
+			MMSread_request,
+			MMSwrite_request,
+			MMSget_variable_access_attributes_request,
+			MMSdefine_named_variable_list_request,
+			MMSget_named_variable_list_attributes_request,
+			MMSdelete_named_variable_list_request))
+
+class MMSconfirmed_response_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_CONFIRMED_RESPONSE_PDU(ASN1F_INTEGER("invokeID"),
+											ASN1F_CHOICE("confirmedSerivceResponse", 
+															MMSget_name_list_response(),
+															MMSget_name_list_response, 
+															MMSread_response, 
+															MMSwrite_response, 
+															MMSget_variable_access_attributes_response, 
+															MMSdefine_named_variable_list_response, 
+															MMSget_named_variable_list_attributes_response, 
+															MMSdelete_named_variable_list_response))
+
+class MMSunconfirmed_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_UNCONFIRMED_PDU(ASN1F_CHOICE("informationReport", 
+													MMSinformation_report(),
+													MMSinformation_report))
+
+class MMSinitiate_request_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_INITIATE_REQUEST_PDU(MMSlocal_detail_calling(),
+											MMSproposed_max_serv_outstanding_calling(),
+											MMSproposed_max_serv_outstanding_called(),
+											MMSproposed_data_structure_nesting_level(),
+											MMSmms_init_request_detail())
+
+class MMSinitiate_response_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_INITIATE_RESPONSE_PDU(MMSlocal_detail_called(),
+											MMSnegotiated_max_serv_outstanding_calling(),
+											MMSnegotiated_max_serv_outstanding_called(),
+											MMSnegotiated_data_structure_nesting_level(),
+											MMSmms_init_response_detail())
+
+class MMSinitiate_error_pdu(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_INITIATE_ERROR_PDU(MMSerror_class(),
+											MMSadditional_code(),
+											MMSadditional_description())
 
 class MMS(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
