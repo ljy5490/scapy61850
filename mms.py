@@ -1288,9 +1288,8 @@ class BERcodec_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(BERcodec_SEQUENCE):
 
 
 
-	
-	
-'''
+
+
 # [ASN1F fileds] #
 #MmsPdu
 class ASN1F_CONFIRMED_REQUEST_PDU(ASN1F_SEQUENCE):
@@ -1338,8 +1337,8 @@ class ASN1F_DELETE_NAMED_VARIABLE_LIST_REQUEST(ASN1F_SEQUENCE):
     ASN1_tag = ASN1_Class_MMS.DELETE_NAMED_VARIABLE_LIST_REQUEST
 
 #ConfirmedServiceResponse
-class ASN1F_GET_NAMED_LIST_RESPONSE(ASN1F_SEQUENCE):
-    ASN1_tag = ASN1_Class_MMS.GET_NAMED_LIST_RESPONSE
+class ASN1F_GET_NAME_LIST_RESPONSE(ASN1F_SEQUENCE):
+    ASN1_tag = ASN1_Class_MMS.GET_NAME_LIST_RESPONSE
 
 class ASN1F_READ_RESPONSE(ASN1F_SEQUENCE):
     ASN1_tag = ASN1_Class_MMS.READ_RESPONSE
@@ -1350,7 +1349,7 @@ class ASN1F_WRITE_RESPONSE(ASN1F_SEQUENCE_OF):
 class ASN1F_GET_VARIABLE_ACCESS_ATTRIBUTES_RESPONSE(ASN1F_SEQUENCE):
     ASN1_tag = ASN1_Class_MMS.GET_VARIABLE_ACCESS_ATTRIBUTES_RESPONSE
 
-class ASN1F_DEFINE_NAMED_VARIABLE_LIST_RESPONSE(ASN1F_SEQUENCE):
+class ASN1F_DEFINE_NAMED_VARIABLE_LIST_RESPONSE(ASN1F_NULL):
     ASN1_tag = ASN1_Class_MMS.DEFINE_NAMED_VARIABLE_LIST_RESPONSE
 	
 class ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE(ASN1F_SEQUENCE):
@@ -1358,7 +1357,8 @@ class ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE(ASN1F_SEQUENCE):
 	
 class ASN1F_DELETE_NAMED_VARIABLE_LIST_RESPONSE(ASN1F_SEQUENCE):
 	ASN1_tag = ASN1_Class_MMS.DELETE_NAMED_VARIABLE_LIST_RESPONSE
-	
+
+#ObjectName	
 class ASN1F_VMD_SPECIFIC(ASN1F_ISO646_STRING):
 	ASN1_tag = ASN1_Class_MMS.VMD_SPECIFIC
 
@@ -1481,21 +1481,21 @@ class ASN1F_CONTINUE_AFTER(ASN1F_ISO646_STRING):
 	ASN1_tag = ASN1_Class_MMS.CONTINUE_AFTER
 	
 #objectScope
-class ASN1F_VMD_SPECIFIC(ASN1F_NULL):
-	ASN1_tag = ASN1_Class_MMS.VMD_SPECIFIC
+class ASN1F_OBJECT_SCOPE_VMD_SPECIFIC(ASN1F_NULL):
+	ASN1_tag = ASN1_Class_MMS.OBJECT_SCOPE_VMD_SPECIFIC
 	
-class ASN1F_DOMAIN_SPECIFIC(ASN1F_ISO646_STRING):
-	ASN1_tag = ASN1_Class_MMS.DOMAIN_SPECIFIC
+class ASN1F_OBJECT_SCOPE_DOMAIN_SPECIFIC(ASN1F_ISO646_STRING):
+	ASN1_tag = ASN1_Class_MMS.OBJECT_SCOPE_DOMAIN_SPECIFIC
 
-class ASN1F_AA_SPECIFIC(ASN1F_NULL):
-	ASN1_tag = ASN1_Class_MMS.AA_SPECIFIC
+class ASN1F_OBJECT_SCOPE_AA_SPECIFIC(ASN1F_NULL):
+	ASN1_tag = ASN1_Class_MMS.OBJECT_SCOPE_AA_SPECIFIC
 	
 #ObjectClass
 class ASN1F_BASIC_OBJECT_CLASS(ASN1F_INTEGER):
 	ASN1_tag = ASN1_Class_MMS.BASIC_OBJECT_CLASS
 	
 #GetNameListResponse
-class ASN1F_LIST_OF_IDENTIFIER(ASN1F_SEQUENCE):
+class ASN1F_LIST_OF_IDENTIFIER(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.LIST_OF_IDENTIFIER
 
 class ASN1F_MORE_FOLLOWS(ASN1F_BOOLEAN):
@@ -1552,7 +1552,7 @@ class ASN1F_ARRAY_ELEMENT_TYPE(ASN1F_SEQUENCE):
 class ASN1F_STRUCTURE_PACKED(ASN1F_BOOLEAN):
 	ASN1_tag = ASN1_Class_MMS.STRUCTURE_PACKED
 	
-class ASN1F_STRUCTURE_COMPONENTS(ASN1F_SEQUENCE):
+class ASN1F_STRUCTURE_COMPONENTS(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.STRUCTURE_COMPONENTS
 
 
@@ -1668,12 +1668,12 @@ class ASN1F_READ_REQUEST_VARIABLE_ACCESS_SPECIFICATION(ASN1F_SEQUENCE):
 class ASN1F_READ_RESPONSE_VARIABLE_ACCESS_SPECIFICATION(ASN1F_SEQUENCE):
 	ASN1_tag = ASN1_Class_MMS.READ_RESPONSE_VARIABLE_ACCESS_SPECIFICATION
 	
-class ASN1F_READ_RESPONSE_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE):
+class ASN1F_READ_RESPONSE_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.READ_RESPONSE_LIST_OF_ACCESS_RESULT
 	
 
 #WriteRequest
-class ASN1F_LIST_OF_DATA(ASN1F_SEQUENCE):
+class ASN1F_LIST_OF_DATA(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.LIST_OF_DATA	
 
 
@@ -1698,12 +1698,12 @@ class ASN1F_TYPE_SPECIFICATION(ASN1F_SEQUENCE):
 
 
 #InformationReport
-class ASN1F_INFORMATION_REPORT_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE):
+class ASN1F_INFORMATION_REPORT_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.INFORMATION_REPORT_LIST_OF_ACCESS_RESULT
 
 
 #DefineNamedVariableListRequest
-class ASN1F_DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE(ASN1F_SEQUENCE):
+class ASN1F_DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE
 	
 
@@ -1711,7 +1711,7 @@ class ASN1F_DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE(ASN1F_SEQUENCE)
 class ASN1F_MMS_DELETABLE(ASN1F_BOOLEAN):
 	ASN1_tag = ASN1_Class_MMS.MMS_DELETABLE
 	
-class ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE(ASN1F_SEQUENCE):
+class ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE
 	
 
@@ -1719,7 +1719,7 @@ class ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE(ASN1F_S
 class ASN1F_SCOPE_OF_DELETE(ASN1F_INTEGER):
 	ASN1_tag = ASN1_Class_MMS.SCOPE_OF_DELETE
 	
-class ASN1F_LIST_OF_VARIABLE_LIST_NAME(ASN1F_SEQUENCE):
+class ASN1F_LIST_OF_VARIABLE_LIST_NAME(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.LIST_OF_VARIABLE_LIST_NAME
 	
 class ASN1F_DOMAIN_NAME(ASN1F_ISO646_STRING):
@@ -1740,10 +1740,10 @@ class ASN1F_FAILURE(ASN1F_INTEGER):
 
 
 #Data
-class ASN1F_DATA_ARRAY(ASN1F_SEQUENCE):
+class ASN1F_DATA_ARRAY(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.DATA_ARRAY
 	
-class ASN1F_DATA_STRUCTURE(ASN1F_SEQUENCE):
+class ASN1F_DATA_STRUCTURE(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.DATA_STRUCTURE
 	
 class ASN1F_DATA_BOOLEAN_(ASN1F_BOOLEAN):
@@ -1778,7 +1778,7 @@ class ASN1F_DATA_UTC_TIME(ASN1F_OCTET_STRING):
 
 	
 #VariableAccessSpecification
-class ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE):
+class ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE
 	
 class ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_SEQUENCE):
@@ -1786,7 +1786,7 @@ class ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_SEQUENCE):
 	
 
 #VariableDef
-class ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_SEQUENCE):
+class ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.VARIABLE_DEF_ALTERNATE_ACCESS
 	
 
@@ -1802,7 +1802,7 @@ class ASN1F_SCATTERED_ACCESS_DESCRIPTION_COMPONENT_NAME(ASN1F_ISO646_STRING):
 class ASN1F_SCATTERED_ACCESS_DESCRIPTION_VARIABLE_SPECIFICATION(ASN1F_SEQUENCE):
 	ASN1_tag = ASN1_Class_MMS.SCATTERED_ACCESS_DESCRIPTION_VARIABLE_SPECIFICATION
 	
-class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE):
+class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE_OF):
 	ASN1_tag = ASN1_Class_MMS.SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS
 
 
@@ -1816,7 +1816,7 @@ class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE):
 class MMSconfirmed_request_pdu(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_CONFIRMED_REQUEST_PDU(ASN1F_INTEGER("invokeID"),
-											ASN1F_CHOICE("ConfirmedSerivceRequest", 
+											ASN1F_CHOICE("confirmedSerivceRequest", 
 															MMSget_name_list_request(),
 															MMSget_name_list_request, 
 															MMSread_request, 
@@ -1829,7 +1829,7 @@ class MMSconfirmed_request_pdu(ASN1_Packet):
 class MMSconfirmed_response_pdu(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_CONFIRMED_RESPONSE_PDU(ASN1F_INTEGER("invokeID"),
-											ASN1F_CHOICE("ConfirmedSerivceResponse", 
+											ASN1F_CHOICE("confirmedSerivceResponse", 
 															MMSget_name_list_response(),
 															MMSget_name_list_response, 
 															MMSread_response, 
@@ -1898,9 +1898,9 @@ class MMSwrite_request(ASN1_Packet):
 
 class MMSget_variable_access_attributes_request(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_GET_VARIABLE_ACCESS_ATTRIBUTES_REQUEST("getVariableAccessAttributes", 
-																MMSname(), 
-																MMSname)
+	ASN1_root = ASN1F_GET_VARIABLE_ACCESS_ATTRIBUTES_REQUEST(ASN1F_CHOICE("getVariableAccessAttributes", 
+																			MMSname(), 
+																			MMSname))
 
 class MMSdefine_named_variable_list_request(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
@@ -1913,11 +1913,11 @@ class MMSdefine_named_variable_list_request(ASN1_Packet):
 
 class MMSget_named_variable_list_attributes_request(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_REQUEST("getNamedVariableListAttributes",
-																	MMSvmd_specific(),
-																	MMSvmd_specific,
-																	MMSdomain_specific,
-																	MMSaa_specific)
+	ASN1_root = ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_REQUEST(ASN1F_CHOICE("getNamedVariableListAttributes",
+																				MMSvmd_specific(),
+																				MMSvmd_specific,
+																				MMSdomain_specific,
+																				MMSaa_specific))
 
 class MMSdelete_named_variable_list_request(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
@@ -1962,7 +1962,7 @@ class MMSdelete_named_variable_list_response(ASN1_Packet):
 	ASN1_root = ASN1F_DELETE_NAMED_VARIABLE_LIST_RESPONSE(MMSnumber_matched(),
 															MMSnumber_deleted())
 
-#ObjectName															
+#ObjectName
 class MMSvmd_specific(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_VMD_SPECIFIC()
@@ -2002,7 +2002,7 @@ class MMSmms_init_request_detail(ASN1_Packet):
 #InitRequestDetail
 class MMSproposed_version_number(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_PROPOSED_VERSION_NUMBER()
+	ASN1_root = ASN1F_PROPOSED_VERSION_NUMBER("proposedVersionNumber")
 
 class MMSproposed_parameter_cbb(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2015,19 +2015,19 @@ class MMSservices_supported_calling(ASN1_Packet):
 #InitiateResponsePdu
 class MMSlocal_detail_called(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOCAL_DETAIL_CALLED()
+	ASN1_root = ASN1F_LOCAL_DETAIL_CALLED("localDetailCalled")
 
 class MMSnegotiated_max_serv_outstanding_calling(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NEGOTIATED_MAX_SERV_OUTSTANDING_CALLING()
+	ASN1_root = ASN1F_NEGOTIATED_MAX_SERV_OUTSTANDING_CALLING("negotiatedMaxServOutstandingCalling")
 
 class MMSnegotiated_max_serv_outstanding_called(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NEGOTIATED_MAX_SERV_OUTSTANDING_CALLED()
+	ASN1_root = ASN1F_NEGOTIATED_MAX_SERV_OUTSTANDING_CALLED("negotiatedMaxServOutstandingCalled")
 
 class MMSnegotiated_data_structure_nesting_level(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NEGOTIATED_DATA_STRUCTURE_NESTING_LEVEL()
+	ASN1_root = ASN1F_NEGOTIATED_DATA_STRUCTURE_NESTING_LEVEL("negotiatedDataStructureNestingLevel")
 
 class MMSmms_init_response_detail(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2038,11 +2038,11 @@ class MMSmms_init_response_detail(ASN1_Packet):
 #InitResponseDetail
 class MMSnegotiated_version_number(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NEGOTIATED_VERSION_NUMBER()
+	ASN1_root = ASN1F_NEGOTIATED_VERSION_NUMBER("negotiatedVersionNumber")
 
 class MMSnegotiated_parameter_cbb(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NEGOTIATED_PARAMETER_CBB()
+	ASN1_root = ASN1F_NEGOTIATED_PARAMETER_CBB("negotiatedParameterCBB")
 
 class MMSservices_supported_called(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2051,7 +2051,9 @@ class MMSservices_supported_called(ASN1_Packet):
 #ServiceError
 class MMSerror_class(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ERROR_CLASS(ASN1F_SEQUENCE(MMSvmd_state,
+	ASN1_root = ASN1F_ERROR_CLASS(ASN1F_CHOICE("errorClass", 
+												MMSvmd_state(),
+												MMSvmd_state,
 												MMSapplication_reference,
 												MMSdefinition,
 												MMSresource,
@@ -2067,7 +2069,7 @@ class MMSerror_class(ASN1_Packet):
 	
 class MMSadditional_code(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ADDITIONAL_CODE()
+	ASN1_root = ASN1F_ADDITIONAL_CODE("additionalCode")
 	
 class MMSadditional_description(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2076,88 +2078,92 @@ class MMSadditional_description(ASN1_Packet):
 #ErrorClass
 class MMSvmd_state(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VMD_STATE()
+	ASN1_root = ASN1F_VMD_STATE("vmd_state")
 
 class MMSapplication_reference(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_APPLICATION_REFERENCE()
+	ASN1_root = ASN1F_APPLICATION_REFERENCE("application_reference")
 	
 class MMSdefinition(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DEFINITION()
+	ASN1_root = ASN1F_DEFINITION("definition")
 	
 class MMSresource(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_RESOURCE()
+	ASN1_root = ASN1F_RESOURCE("resource")
 	
 class MMSservice(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SERVICE()
+	ASN1_root = ASN1F_SERVICE("service")
 	
 class MMSservice_preempt(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SERVICE_PREEMPT()
+	ASN1_root = ASN1F_SERVICE_PREEMPT("service_preempt")
 	
 class MMStime_resolution(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TIME_RESOLUTION()
+	ASN1_root = ASN1F_TIME_RESOLUTION("time_resolution")
 	
 class MMSaccess(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS()
+	ASN1_root = ASN1F_ACCESS("access")
 	
 class MMSinitiate(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_INITIATE()
+	ASN1_root = ASN1F_INITIATE("initiate")
 	
 class MMSconclude(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_CONCLUDE()
+	ASN1_root = ASN1F_CONCLUDE("conclude")
 	
 class MMScancel(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_CANCEL()
+	ASN1_root = ASN1F_CANCEL("cancel")
 	
 class MMSfile(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_FILE()
+	ASN1_root = ASN1F_FILE("file")
 	
 class MMSothers(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_OTHERS()
+	ASN1_root = ASN1F_OTHERS("others")
 
 #GetNameListRequest
 class MMSobject_class(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_OBJECT_CLASS(MMSbasic_object_class)
+	ASN1_root = ASN1F_OBJECT_CLASS(ASN1F_CHOICE("objectClass",
+												MMSbasic_object_class(),
+												MMSbasic_object_class))
 	
 class MMSobject_scope(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_OBJECT_SCOPE(MMSvmd_specific,
-									MMSdomain_specific,
-									MMSaa_specific)
+	ASN1_root = ASN1F_OBJECT_SCOPE(ASN1F_CHOICE("objectScope",
+												MMSobject_scope_vmd_specific(),
+												MMSobject_scope_vmd_specific,
+												MMSobject_scope_domain_specific,
+												MMSobject_scope_aa_specific))
 
 class MMScontinue_after(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_CONTINUE_AFTER()
 	
 #ObjectScope
-class MMSvmd_specific(ASN1_Packet):
+class MMSobject_scope_vmd_specific(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VMD_SPECIFIC()
+	ASN1_root = ASN1F_OBJECT_SCOPE_VMD_SPECIFIC()
 	
-class MMSdomain_specific(ASN1_Packet):
+class MMSobject_scope_domain_specific(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DOMAIN_SPECIFIC()
+	ASN1_root = ASN1F_OBJECT_SCOPE_DOMAIN_SPECIFIC()
 
-class MMSaa_specific(ASN1_Packet):
+class MMSobject_scope_aa_specific(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_AA_SPECIFIC()
+	ASN1_root = ASN1F_OBJECT_SCOPE_AA_SPECIFIC()
 	
 #ObjectClass
 class MMSbasic_object_class(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_BASIC_OBJECT_CLASS()
+	ASN1_root = ASN1F_BASIC_OBJECT_CLASS("basicObjectClass")
 	
 #GetNameListResponse
 class MMSlist_of_identifier(ASN1_Packet):
@@ -2186,28 +2192,28 @@ class MMStype_specification_boolean_(ASN1_Packet):
 	
 class MMStype_specification_bit_string(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_BIT_STRING()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_BIT_STRING("bit_string")
 	
 class MMStype_specification_integer(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_INTEGER()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_INTEGER("integer")
 	
 class MMStype_specification_unsigned(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_UNSIGNED()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_UNSIGNED("unsigned")
 	
 class MMStype_specification_floating_point(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_FLOATING_POINT(ASN1F_INTEGER(),
-														ASN1F_INTEGER())
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_FLOATING_POINT(ASN1F_INTEGER("format_width"),
+														ASN1F_INTEGER("exponent_width"))
 	
 class MMStype_specification_octet_string(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_OCTET_STRING()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_OCTET_STRING("octet_string")
 	
 class MMStype_specification_visible_string(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_VISIBLE_STRING()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_VISIBLE_STRING("visible_string")
 
 class MMStype_specification_binary_time(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2215,7 +2221,7 @@ class MMStype_specification_binary_time(ASN1_Packet):
 	
 class MMStype_specification_mms_string(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION_MMS_STRING()
+	ASN1_root = ASN1F_TYPE_SPECIFICATION_MMS_STRING("mms_string")
 	
 class MMStype_specification_utc_time(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2228,22 +2234,24 @@ class MMSarray_packed(ASN1_Packet):
 	
 class MMSarray_number_of_elements(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ARRAY_NUMBER_OF_ELEMENTS()
+	ASN1_root = ASN1F_ARRAY_NUMBER_OF_ELEMENTS("numberOfElements")
 	
 class MMSarray_element_type(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ARRAY_ELEMENT_TYPE(ASN1F_SEQUENCE(MMStype_specification_array(),
-														MMStype_specification_structure(),
-														MMStype_specification_boolean_(),
-														MMStype_specification_bit_string(),
-														MMStype_specification_integer(),
-														MMStype_specification_unsigned(),
-														MMStype_specification_floating_point(),
-														MMStype_specification_octet_string(),
-														MMStype_specification_visible_string(),
-														MMStype_specification_binary_time(),
-														MMStype_specification_mms_string(),
-														MMStype_specification_utc_time()))
+	ASN1_root = ASN1F_ARRAY_ELEMENT_TYPE(ASN1F_CHOICE("elementType",
+														MMStype_specification_array(),
+														MMStype_specification_array,
+														MMStype_specification_structure,
+														MMStype_specification_boolean_,
+														MMStype_specification_bit_string,
+														MMStype_specification_integer,
+														MMStype_specification_unsigned,
+														MMStype_specification_floating_point,
+														MMStype_specification_octet_string,
+														MMStype_specification_visible_string,
+														MMStype_specification_binary_time,
+														MMStype_specification_mms_string,
+														MMStype_specification_utc_time))
 	
 #structure
 class MMSstructure_packed(ASN1_Packet):
@@ -2252,8 +2260,8 @@ class MMSstructure_packed(ASN1_Packet):
 	
 class MMSstructure_components(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_STRUCTURE_COMPONENTS(ASN1F_SEQUENCE(MMSstructure_component_component_name,
-															MMSstructure_component_component_type))
+	ASN1_root = ASN1F_STRUCTURE_COMPONENTS(ASN1F_SEQUENCE(MMSstructure_component_component_name(),
+															MMSstructure_component_component_type()))
 
 
 #StructComponent
@@ -2263,32 +2271,38 @@ class MMSstructure_component_component_name(ASN1_Packet):
 	
 class MMSstructure_component_component_type(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_STRUCTURE_COMPONENT_COMPONENT_TYPE(ASN1F_SEQUENCE(MMStype_specification_array(),
-														MMStype_specification_structure(),
-														MMStype_specification_boolean_(),
-														MMStype_specification_bit_string(),
-														MMStype_specification_integer(),
-														MMStype_specification_unsigned(),
-														MMStype_specification_floating_point(),
-														MMStype_specification_octet_string(),
-														MMStype_specification_visible_string(),
-														MMStype_specification_binary_time(),
-														MMStype_specification_mms_string(),
-														MMStype_specification_utc_time()))
+	ASN1_root = ASN1F_STRUCTURE_COMPONENT_COMPONENT_TYPE(ASN1F_CHOICE("componentType", 
+																		MMStype_specification_array(),
+																		MMStype_specification_array,
+																		MMStype_specification_structure,
+																		MMStype_specification_boolean_,
+																		MMStype_specification_bit_string,
+																		MMStype_specification_integer,
+																		MMStype_specification_unsigned,
+																		MMStype_specification_floating_point,
+																		MMStype_specification_octet_string,
+																		MMStype_specification_visible_string,
+																		MMStype_specification_binary_time,
+																		MMStype_specification_mms_string,
+																		MMStype_specification_utc_time))
 
 #AlternateAccess
 class MMSalternate_access_select_alternate_access(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECT_ALTERNATE_ACCESS(ASN1F_SEQUENCE(MMSaccess_selection_component(),
-																			MMSaccess_selection_index(),
-																			MMSaccess_selection_index_range(),
-																			MMSalternate_access_all_elements()),
-																ASN1F_SEQUENCE_OF(ASN1F_SEQUENCE(MMSalternate_access_select_alternate_access(),
-																								MMSalternate_access_component(),
-																								MMSalternate_access_index(),
-																								MMSalternate_access_index_range(),
-																								MMSalternate_access_all_elements(),
-																								MMSalternate_access_named())))
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECT_ALTERNATE_ACCESS(ASN1F_CHOICE("accessSelection",
+																			MMSaccess_selection_component(),
+																			MMSaccess_selection_component,
+																			MMSaccess_selection_index,
+																			MMSaccess_selection_index_range,
+																			MMSalternate_access_all_elements),
+																ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
+																								MMSalternate_access_select_alternate_access(),
+																								MMSalternate_access_select_alternate_access,
+																								MMSalternate_access_component,
+																								MMSalternate_access_index,
+																								MMSalternate_access_index_range,
+																								MMSalternate_access_all_elements,
+																								MMSalternate_access_named)))
 
 class MMSalternate_access_component(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2296,7 +2310,7 @@ class MMSalternate_access_component(ASN1_Packet):
 
 class MMSalternate_access_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX()
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX("index")
 
 class MMSalternate_access_index_range(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2310,11 +2324,13 @@ class MMSalternate_access_all_elements(ASN1_Packet):
 class MMSalternate_access_named(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_ALTERNATE_ACCESS_NAMED(MMSnamed_component_name(),
-												ASN1F_SEQUENCE(MMSalternate_access_selection_select_alternate_access(),
-																MMSalternate_access_selection_component(),
-																MMSalternate_access_selection_index(),
-																MMSalternate_access_selection_index_range(),
-																MMSalternate_access_selection_alle_elements()))
+												ASN1F_CHOICE("accesst",
+																MMSalternate_access_selection_select_alternate_access(),
+																MMSalternate_access_selection_select_alternate_access,
+																MMSalternate_access_selection_component,
+																MMSalternate_access_selection_index,
+																MMSalternate_access_selection_index_range,
+																MMSalternate_access_selection_alle_elements))
 
 #accessSelection
 class MMSaccess_selection_component(ASN1_Packet):
@@ -2323,7 +2339,7 @@ class MMSaccess_selection_component(ASN1_Packet):
 
 class MMSaccess_selection_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX()
+	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX("index")
 
 class MMSaccess_selection_index_range(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2335,14 +2351,14 @@ class MMSaccess_selection_all_elements(ASN1_Packet):
 	ASN1_root = ASN1F_ACCESS_SELECTION_ALL_ELEMENTS()
 
 
-#indexrange
+#indexRange
 class MMSlow_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOW_INDEX()
+	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
 
 class MMSnumber_of_elements(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS()
+	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
 
 	
 #named
@@ -2355,9 +2371,17 @@ class MMSnamed_component_name(ASN1_Packet):
 class MMSalternate_access_selection_select_alternate_access(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_SELECT_ALTERNATE_ACCESS(MMSselect_alternate_access_component(),
-																			MMSselect_alternate_access_index(),
+																			MMSselect_alternate_access_index("index"),
 																			MMSselect_alternate_access_index_range(),
-																			MMSselect_alternate_access_all_elements())
+																			MMSselect_alternate_access_all_elements(),
+																			ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
+																								MMSalternate_access_select_alternate_access(),
+																								MMSalternate_access_select_alternate_access,
+																								MMSalternate_access_component,
+																								MMSalternate_access_index,
+																								MMSalternate_access_index_range,
+																								MMSalternate_access_all_elements,
+																								MMSalternate_access_named)))
 	
 class MMSalternate_access_selection_component(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2365,7 +2389,7 @@ class MMSalternate_access_selection_component(ASN1_Packet):
 	
 class MMSalternate_access_selection_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX()
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX("index")
 	
 class MMSalternate_access_selection_index_range(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2383,7 +2407,7 @@ class MMSselect_alternate_access_component(ASN1_Packet):
 	
 class MMSselect_alternate_access_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SELECT_ALTERNATE_ACCESS_INDEX()
+	ASN1_root = ASN1F_SELECT_ALTERNATE_ACCESS_INDEX("index")
 	
 class MMSselect_alternate_access_index_range(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2398,21 +2422,21 @@ class MMSselect_alternate_access_all_elements(ASN1_Packet):
 #indexRnage
 class MMSlow_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOW_INDEX()
+	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
 	
 class MMSnumber_of_elements(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS()
+	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
 
 
 #IndexRangeSeq
 class MMSlow_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOW_INDEX()
+	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
 	
 class MMSnumber_of_elements(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS()
+	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
 
 
 #ReadRequest
@@ -2422,54 +2446,64 @@ class MMSread_request_specification_with_result(ASN1_Packet):
 	
 class MMSread_request_variable_access_specification(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_READ_REQUEST_VARIABLE_ACCESS_SPECIFICATION(MMSvariable_access_specification_list_of_variable(),
-																	MMSvariable_access_specification_variable_list_name())
+	ASN1_root = ASN1F_READ_REQUEST_VARIABLE_ACCESS_SPECIFICATION(ASN1F_CHOICE("variableAccessSpecification",
+																				MMSvariable_access_specification_list_of_variable(),
+																				MMSvariable_access_specification_list_of_variable,
+																				MMSvariable_access_specification_variable_list_name))
 
 
 #ReadResponse
 class MMSread_response_variable_access_specification(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_READ_RESPONSE_VARIABLE_ACCESS_SPECIFICATION(MMSvariable_access_specification_list_of_variable(),
-																	MMSvariable_access_specification_variable_list_name())
+	ASN1_root = ASN1F_READ_RESPONSE_VARIABLE_ACCESS_SPECIFICATION(ASN1F_CHOICE("variableAccessSpecification",
+																				MMSvariable_access_specification_list_of_variable(),
+																				MMSvariable_access_specification_list_of_variable,
+																				MMSvariable_access_specification_variable_list_name))
 	
 class MMSread_response_list_of_access_result(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_READ_RESPONSE_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE(MMSfailure(),
-																		ASN1F_SEQUENCE(MMSdata_array(),
-																						MMSdata_structure(),
-																						MMSdata_boolean_(),
-																						MMSdata_bit_string(),
-																						MMSdata_integer(),
-																						MMSdata_unsigned(),
-																						MMSdata_floating_point(),
-																						MMSdata_octet_string(),
-																						MMSdata_visible_string(),
-																						MMSdata_binary_time(),
-																						MMSdata_mms_string(),
-																						MMSdata_utc_time())))
+	ASN1_root = ASN1F_READ_RESPONSE_LIST_OF_ACCESS_RESULT(ASN1F_CHOICE("accessResult", 
+																		MMSfailure(),
+																		MMSfailure,
+																		ASN1F_CHOICE("success",
+																						MMSdata_array(),
+																						MMSdata_array,
+																						MMSdata_structure,
+																						MMSdata_boolean_,
+																						MMSdata_bit_string,
+																						MMSdata_integer,
+																						MMSdata_unsigned,
+																						MMSdata_floating_point,
+																						MMSdata_octet_string,
+																						MMSdata_visible_string,
+																						MMSdata_binary_time,
+																						MMSdata_mms_string,
+																						MMSdata_utc_time)))
 	
 
 #WriteRequest
 class MMSlist_of_data(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LIST_OF_DATA(ASN1F_SEQUENCE(MMSdata_array(),
-												MMSdata_structure(),
-												MMSdata_boolean_(),
-												MMSdata_bit_string(),
-												MMSdata_integer(),
-												MMSdata_unsigned(),
-												MMSdata_floating_point(),
-												MMSdata_octet_string(),
-												MMSdata_visible_string(),
-												MMSdata_binary_time(),
-												MMSdata_mms_string(),
-												MMSdata_utc_time()))
+	ASN1_root = ASN1F_LIST_OF_DATA(ASN1F_CHOICE("data",
+												MMSdata_array(),
+												MMSdata_array,
+												MMSdata_structure,
+												MMSdata_boolean_,
+												MMSdata_bit_string,
+												MMSdata_integer,
+												MMSdata_unsigned,
+												MMSdata_floating_point,
+												MMSdata_octet_string,
+												MMSdata_visible_string,
+												MMSdata_binary_time,
+												MMSdata_mms_string,
+												MMSdata_utc_time))
 
 
 #WriteResponse
 class MMSfailure(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_FAILURE()
+	ASN1_root = ASN1F_FAILURE("failure")
 
 class MMSsuccess(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2478,9 +2512,11 @@ class MMSsuccess(ASN1_Packet):
 #GetVariableAccessAttributesRequest
 class MMSname(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NAME(ASN1F_SEQUENCE(MMSvmd_specific(),
-										MMSdomain_specific(),
-										MMSaa_specific()))
+	ASN1_root = ASN1F_NAME(ASN1F_CHOICE("name", 
+										MMSvmd_specific(),
+										MMSvmd_specific,
+										MMSdomain_specific,
+										MMSaa_specific))
 
 
 #GetVariableAccessAttributesResponse
@@ -2490,42 +2526,50 @@ class MMSmms_deletable(ASN1_Packet):
 
 class MMStype_specification(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_TYPE_SPECIFICATION(ASN1F_SEQUENCE(MMStype_specification_array(),
-														MMStype_specification_structure(),
-														MMStype_specification_boolean_(),
-														MMStype_specification_bit_string(),
-														MMStype_specification_integer(),
-														MMStype_specification_unsigned(),
-														MMStype_specification_floating_point(),
-														MMStype_specification_octet_string(),
-														MMStype_specification_visible_string(),
-														MMStype_specification_binary_time(),
-														MMStype_specification_mms_string(),
-														MMStype_specification_utc_time()))
+	ASN1_root = ASN1F_TYPE_SPECIFICATION(ASN1F_CHOICE("typeSpecification",
+														MMStype_specification_array(),
+														MMStype_specification_array,
+														MMStype_specification_structure,
+														MMStype_specification_boolean_,
+														MMStype_specification_bit_string,
+														MMStype_specification_integer,
+														MMStype_specification_unsigned,
+														MMStype_specification_floating_point,
+														MMStype_specification_octet_string,
+														MMStype_specification_visible_string,
+														MMStype_specification_binary_time,
+														MMStype_specification_mms_string,
+														MMStype_specification_utc_time))
 
 
 #InformationReport
 class MMSinformation_report_list_of_access_result(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_INFORMATION_REPORT_LIST_OF_ACCESS_RESULT(ASN1F_SEQUENCE(MMSfailure(),
-																			ASN1F_SEQUENCE(MMSdata_array(),
-																						MMSdata_structure(),
-																						MMSdata_boolean_(),
-																						MMSdata_bit_string(),
-																						MMSdata_integer(),
-																						MMSdata_unsigned(),
-																						MMSdata_floating_point(),
-																						MMSdata_octet_string(),
-																						MMSdata_visible_string(),
-																						MMSdata_binary_time(),
-																						MMSdata_mms_string(),
-																						MMSdata_utc_time())))
+	ASN1_root = ASN1F_INFORMATION_REPORT_LIST_OF_ACCESS_RESULT(ASN1F_CHOICE("accessResult",
+																			MMSfailure(),
+																			MMSfailure,
+																			ASN1F_CHOICE("success",
+																						MMSdata_array(),
+																						MMSdata_array,
+																						MMSdata_structure,
+																						MMSdata_boolean_,
+																						MMSdata_bit_string,
+																						MMSdata_integer,
+																						MMSdata_unsigned,
+																						MMSdata_floating_point,
+																						MMSdata_octet_string,
+																						MMSdata_visible_string,
+																						MMSdata_binary_time,
+																						MMSdata_mms_string,
+																						MMSdata_utc_time)))
 
 
 #DefineNamedVariableListRequest
 class MMSdefined_named_variable_list_request_list_of_variable(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_SEQUENCE(MMSname()),
+	ASN1_root = ASN1F_DEFINED_NAMED_VARIABLE_LIST_REQUEST_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_CHOICE("variableSpecification",
+																										MMSname(),
+																										MMSname),
 																							MMSvariable_def_alternate_access()))
 	
 
@@ -2536,20 +2580,24 @@ class MMSmms_deletable(ASN1_Packet):
 	
 class MMSget_named_variable_list_attributes_response_list_of_variable(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_SEQUENCE(MMSname()),
-																							MMSvariable_def_alternate_access()))
+	ASN1_root = ASN1F_GET_NAMED_VARIABLE_LIST_ATTRIBUTES_RESPONSE_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_CHOICE("variableSpecification",
+																												MMSname(),
+																												MMSname),
+																									MMSvariable_def_alternate_access()))
 	
 
 #DeleteNamedVariableListRequest
 class MMSscope_of_delete(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SCOPE_OF_DELETE()
+	ASN1_root = ASN1F_SCOPE_OF_DELETE("scopeOfDelete")
 	
 class MMSlist_of_variable_list_name(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LIST_OF_VARIABLE_LIST_NAME(ASN1F_SEQUENCE(MMSvmd_specific(),
-																MMSdomain_specific(),
-																MMSaa_specific()))
+	ASN1_root = ASN1F_LIST_OF_VARIABLE_LIST_NAME(ASN1F_CHOICE("variableListName",
+																MMSvmd_specific(),
+																MMSvmd_specific,
+																MMSdomain_specific,
+																MMSaa_specific))
 	
 class MMSdomain_name(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2559,49 +2607,53 @@ class MMSdomain_name(ASN1_Packet):
 #DeleteNamedVariableListResponse
 class MMSnumber_matched(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_MATCHED()
+	ASN1_root = ASN1F_NUMBER_MATCHED("numberMatched")
 	
 class MMSnumber_deleted(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_DELETED()
+	ASN1_root = ASN1F_NUMBER_DELETED("numberDeleted")
 	
 
 #AccessResult
 class MMSfailure(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_FAILURE()
+	ASN1_root = ASN1F_FAILURE("failure")
 
 
 #Data
 class MMSdata_array(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DATA_ARRAY(ASN1F_SEQUENCE(MMSdata_array(),
-												MMSdata_structure(),
-												MMSdata_boolean_(),
-												MMSdata_bit_string(),
-												MMSdata_integer(),
-												MMSdata_unsigned(),
-												MMSdata_floating_point(),
-												MMSdata_octet_string(),
-												MMSdata_visible_string(),
-												MMSdata_binary_time(),
-												MMSdata_mms_string(),
-												MMSdata_utc_time()))
+	ASN1_root = ASN1F_DATA_ARRAY(ASN1F_CHOICE("data", 
+												MMSdata_array(),
+												MMSdata_array,
+												MMSdata_structure,
+												MMSdata_boolean_,
+												MMSdata_bit_string,
+												MMSdata_integer,
+												MMSdata_unsigned,
+												MMSdata_floating_point,
+												MMSdata_octet_string,
+												MMSdata_visible_string,
+												MMSdata_binary_time,
+												MMSdata_mms_string,
+												MMSdata_utc_time))
 	
 class MMSdata_structure(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DATA_STRUCTURE(ASN1F_SEQUENCE(MMSdata_array(),
-													MMSdata_structure(),
-													MMSdata_boolean_(),
-													MMSdata_bit_string(),
-													MMSdata_integer(),
-													MMSdata_unsigned(),
-													MMSdata_floating_point(),
-													MMSdata_octet_string(),
-													MMSdata_visible_string(),
-													MMSdata_binary_time(),
-													MMSdata_mms_string(),
-													MMSdata_utc_time()))
+	ASN1_root = ASN1F_DATA_STRUCTURE(ASN1F_CHOICE("data", 
+												MMSdata_array(),
+												MMSdata_array,
+												MMSdata_structure,
+												MMSdata_boolean_,
+												MMSdata_bit_string,
+												MMSdata_integer,
+												MMSdata_unsigned,
+												MMSdata_floating_point,
+												MMSdata_octet_string,
+												MMSdata_visible_string,
+												MMSdata_binary_time,
+												MMSdata_mms_string,
+												MMSdata_utc_time))
 	
 class MMSdata_boolean_(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2613,11 +2665,11 @@ class MMSdata_bit_string(ASN1_Packet):
 	
 class MMSdata_integer(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DATA_INTEGER()
+	ASN1_root = ASN1F_DATA_INTEGER("integer")
 	
 class MMSdata_unsigned(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DATA_UNSIGNED()
+	ASN1_root = ASN1F_DATA_UNSIGNED("unsigned")
 	
 class MMSdata_floating_point(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -2647,33 +2699,41 @@ class MMSdata_utc_time(ASN1_Packet):
 #VariableAccessSpecification
 class MMSvariable_access_specification_list_of_variable(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_SEQUENCE(MMSname()),
+	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_CHOICE("variableSpecification",
+																												MMSname(),
+																												MMSname),
 																									MMSvariable_def_alternate_access()))
 	
 class MMSvariable_access_specification_variable_list_name(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_SEQUENCE(MMSvmd_specific(),
-																					MMSdomain_specific(),
-																					MMSaa_specific()))
+	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_CHOICE("variableListName",
+																					MMSvmd_specific(),
+																					MMSvmd_specific,
+																					MMSdomain_specific,
+																					MMSaa_specific))
 	
 
 #VariableDef
 class MMSvariable_def_alternate_access(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_SEQUENCE(MMSalternate_access_select_alternate_access(),
-																	MMSalternate_access_component(),
-																	MMSalternate_access_index(),
-																	MMSalternate_access_index_range(),
-																	MMSalternate_access_all_elements(),
-																	MMSalternate_access_named()))
+	ASN1_root = ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_CHOICE("alternateAccess", 
+																	MMSalternate_access_select_alternate_access(),
+																	MMSalternate_access_select_alternate_access,
+																	MMSalternate_access_component,
+																	MMSalternate_access_index,
+																	MMSalternate_access_index_range,
+																	MMSalternate_access_all_elements,
+																	MMSalternate_access_named))
 	
 
 #VariableSpecification
 class MMSname(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NAME(ASN1F_SEQUENCE(MMSvmd_specific(),
-										MMSdomain_specific(),
-										MMSaa_specific()))
+	ASN1_root = ASN1F_NAME(ASN1F_CHOICE("name", 
+										MMSvmd_specific(),
+										MMSvmd_specific,
+										MMSdomain_specific,
+										MMSaa_specific))
 
 
 #ScatteredAccessDescription
@@ -2683,28 +2743,37 @@ class MMSscattered_access_description_component_name(ASN1_Packet):
 	
 class MMSscattered_access_description_variable_specification(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SCATTERED_ACCESS_DESCRIPTION_VARIABLE_SPECIFICATION(ASN1F_SEQUENCE(MMSname()))
+	ASN1_root = ASN1F_SCATTERED_ACCESS_DESCRIPTION_VARIABLE_SPECIFICATION(ASN1F_CHOICE("variableSpecification",
+																						MMSname(),
+																						MMSname))
 	
 class MMSscattered_access_description_alternate_access(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE(MMSalternate_access_select_alternate_access(),
-																					MMSalternate_access_component(),
-																					MMSalternate_access_index(),
-																					MMSalternate_access_index_range(),
-																					MMSalternate_access_all_elements(),
-																					MMSalternate_access_named()))
+	ASN1_root = ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_CHOICE("alternateAccess",
+																					MMSalternate_access_select_alternate_access(),
+																					MMSalternate_access_select_alternate_access,
+																					MMSalternate_access_component,
+																					MMSalternate_access_index,
+																					MMSalternate_access_index_range,
+																					MMSalternate_access_all_elements,
+																					MMSalternate_access_named))
 
 
 
 
 class MMS(ASN1_Packet):
     ASN1_codec = ASN1_Codecs.BER
-    ASN1_root = ASN1F_SEQUENCE("PDU", MMSconfirmed_request(),
-            MMSconfirmed_request, MMSconfirmed_response, MMSunconfirmed,
-            MMSinitiate_request, MMSinitiate_response, MMSinitiate_error)
+    ASN1_root = ASN1F_CHOICE("PDU", 
+								MMSconfirmed_request_pdu(),
+								MMSconfirmed_request_pdu,
+								MMSconfirmed_response_pdu,
+								MMSunconfirmed_pdu,
+								MMSinitiate_request_pdu,
+								MMSinitiate_response_pdu,
+								MMSinitiate_error_pdu)
+
 
 '''
-
 z=ASN1_CONFIRMED_REQUEST_PDU([
 ASN1_INTEGER(198),
 ASN1_WRITE_REQUEST([
@@ -2718,15 +2787,8 @@ ASN1_ISO646_STRING("MHAI1$MX$HPhV$phsAHar")])])
 ASN1_LIST_OF_DATA([
 ASN1_DATA_ARRAY([
 ASN1_DATA_FLOATING_POINT("ABCDE")])])])])
+'''
 
-class ASN1_Class_TEST(ASN1_Class_UNIVERSAL):
-    name="TEST"
-    HELLO=0xa1
-class ASN1_TEST(ASN1_SEQUENCE):
-    tag = ASN1_Class_TEST.HELLO
-class BERcodec_TEST(BERcodec_SEQUENCE):
-    tag = ASN1_Class_TEST.HELLO
-z=ASN1_TEST([ASN1_ISO646_STRING("MHAI1$MX$HPhV$phsAHar")])
-#z=ASN1_SEQUENCE([ASN1_ISO646_STRING("MHAI1$MX$HPhV$phsAHar")])
+z=MMS(PDU=MMSconfirmed_request_pdu([invokeID=137, confirmedSerivceRequest=MMSwrite_request([variableAccessSpecification=MMSvariable_access_specification_list_of_variable([variableSpecification=MMSname(name=MMSdomain_specific("TEMPLATELD0", "MHAI1$MX$HPhV$phsAHar"))]), MMSlist_of_data(data=MMSdata_array(data=MMSdata_structure(data=MMSdata_structure(data=MMSdata_floating_point("ABCDE")))))])]))
+z.show()
 hexdump(z)
-
