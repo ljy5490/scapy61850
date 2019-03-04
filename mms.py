@@ -1813,6 +1813,168 @@ class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE_OF):
 	
 # [MMS packet] #
 
+#indexRange
+class MMSlow_index(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
+
+class MMSnumber_of_elements(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
+
+
+#ObjectName
+class MMSvmd_specific(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_VMD_SPECIFIC()
+
+class MMSdomain_specific(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_DOMAIN_SPECIFIC(ASN1F_ISO646_STRING(),
+										ASN1F_ISO646_STRING())
+	
+class MMSaa_specific(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_AA_SPECIFIC()
+
+#GetVariableAccessAttributesRequest
+class MMSname(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_NAME(ASN1F_CHOICE("name", 
+										MMSvmd_specific(),
+										MMSvmd_specific,
+										MMSdomain_specific,
+										MMSaa_specific))
+
+										
+#accessSelection
+class MMSaccess_selection_component(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ACCESS_SELECTION_COMPONENT()
+
+class MMSaccess_selection_index(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX("index")
+
+class MMSaccess_selection_index_range(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX_RANGE(MMSlow_index(),
+													MMSnumber_of_elements())
+
+class MMSaccess_selection_all_elements(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ACCESS_SELECTION_ALL_ELEMENTS()
+
+	
+#AlternateAccesSelection
+class MMSalternate_access_selection_select_alternate_access(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_SELECT_ALTERNATE_ACCESS(MMSselect_alternate_access_component(),
+																			MMSselect_alternate_access_index("index"),
+																			MMSselect_alternate_access_index_range(),
+																			MMSselect_alternate_access_all_elements(),
+																			ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
+																								MMSalternate_access_select_alternate_access(),
+																								MMSalternate_access_select_alternate_access,
+																								MMSalternate_access_component,
+																								MMSalternate_access_index,
+																								MMSalternate_access_index_range,
+																								MMSalternate_access_all_elements,
+																								MMSalternate_access_named)))
+	
+class MMSalternate_access_selection_component(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_COMPONENT()
+	
+class MMSalternate_access_selection_index(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX("index")
+	
+class MMSalternate_access_selection_index_range(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX_RANGE()
+	
+class MMSalternate_access_selection_alle_elements(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_ALLE_ELEMENTS()
+	
+
+	
+#AlternateAccess
+class MMSalternate_access_component(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_COMPONENT()
+
+class MMSalternate_access_index(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX("index")
+
+class MMSalternate_access_index_range(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX_RANGE(MMSlow_index(),
+													MMSnumber_of_elements())
+
+class MMSalternate_access_all_elements(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_ALL_ELEMENTS()
+
+class MMSalternate_access_named(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_NAMED(MMSnamed_component_name(),
+												ASN1F_CHOICE("accesst",
+																MMSalternate_access_selection_select_alternate_access(),
+																MMSalternate_access_selection_select_alternate_access,
+																MMSalternate_access_selection_component,
+																MMSalternate_access_selection_index,
+																MMSalternate_access_selection_index_range,
+																MMSalternate_access_selection_alle_elements))
+
+class MMSalternate_access_select_alternate_access(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECT_ALTERNATE_ACCESS(ASN1F_CHOICE("accessSelection",
+																			MMSaccess_selection_component(),
+																			MMSaccess_selection_component,
+																			MMSaccess_selection_index,
+																			MMSaccess_selection_index_range,
+																			MMSaccess_selection_all_elements),
+																ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
+																								MMSalternate_access_select_alternate_access(),
+																								MMSalternate_access_select_alternate_access,
+																								MMSalternate_access_component,
+																								MMSalternate_access_index,
+																								MMSalternate_access_index_range,
+																								MMSalternate_access_all_elements,
+																								MMSalternate_access_named)))
+
+
+#VariableDef
+class MMSvariable_def_alternate_access(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_CHOICE("alternateAccess", 
+																	MMSalternate_access_select_alternate_access(),
+																	MMSalternate_access_select_alternate_access,
+																	MMSalternate_access_component,
+																	MMSalternate_access_index,
+																	MMSalternate_access_index_range,
+																	MMSalternate_access_all_elements,
+																	MMSalternate_access_named))
+
+#VariableAccessSpecification
+class MMSvariable_access_specification_list_of_variable(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_CHOICE("variableSpecification",
+																												MMSname(),
+																												MMSname),
+																									MMSvariable_def_alternate_access()))
+	
+class MMSvariable_access_specification_variable_list_name(ASN1_Packet):
+	ASN1_codec = ASN1_Codecs.BER
+	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_CHOICE("variableListName",
+																					MMSvmd_specific(),
+																					MMSvmd_specific,
+																					MMSdomain_specific,
+																					MMSaa_specific))
+
 #UnconfirmedService
 class MMSinformation_report(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
@@ -1908,19 +2070,6 @@ class MMSdelete_named_variable_list_response(ASN1_Packet):
 	ASN1_root = ASN1F_DELETE_NAMED_VARIABLE_LIST_RESPONSE(MMSnumber_matched(),
 															MMSnumber_deleted())
 
-#ObjectName
-class MMSvmd_specific(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VMD_SPECIFIC()
-
-class MMSdomain_specific(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_DOMAIN_SPECIFIC(ASN1F_ISO646_STRING(),
-										ASN1F_ISO646_STRING())
-	
-class MMSaa_specific(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_AA_SPECIFIC()
 
 #InitiateRequestPdu
 class MMSlocal_detail_calling(ASN1_Packet):
@@ -2232,79 +2381,9 @@ class MMSstructure_component_component_type(ASN1_Packet):
 																		MMStype_specification_mms_string,
 																		MMStype_specification_utc_time))
 
-#AlternateAccess
-class MMSalternate_access_select_alternate_access(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECT_ALTERNATE_ACCESS(ASN1F_CHOICE("accessSelection",
-																			MMSaccess_selection_component(),
-																			MMSaccess_selection_component,
-																			MMSaccess_selection_index,
-																			MMSaccess_selection_index_range,
-																			MMSalternate_access_all_elements),
-																ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
-																								MMSalternate_access_select_alternate_access(),
-																								MMSalternate_access_select_alternate_access,
-																								MMSalternate_access_component,
-																								MMSalternate_access_index,
-																								MMSalternate_access_index_range,
-																								MMSalternate_access_all_elements,
-																								MMSalternate_access_named)))
-
-class MMSalternate_access_component(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_COMPONENT()
-
-class MMSalternate_access_index(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX("index")
-
-class MMSalternate_access_index_range(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_INDEX_RANGE(MMSlow_index(),
-													MMSnumber_of_elements())
-
-class MMSalternate_access_all_elements(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_ALL_ELEMENTS()
-
-class MMSalternate_access_named(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_NAMED(MMSnamed_component_name(),
-												ASN1F_CHOICE("accesst",
-																MMSalternate_access_selection_select_alternate_access(),
-																MMSalternate_access_selection_select_alternate_access,
-																MMSalternate_access_selection_component,
-																MMSalternate_access_selection_index,
-																MMSalternate_access_selection_index_range,
-																MMSalternate_access_selection_alle_elements))
-
-#accessSelection
-class MMSaccess_selection_component(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS_SELECTION_COMPONENT()
-
-class MMSaccess_selection_index(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX("index")
-
-class MMSaccess_selection_index_range(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS_SELECTION_INDEX_RANGE(MMSlow_index(),
-													MMSnumber_of_elements())
-
-class MMSaccess_selection_all_elements(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ACCESS_SELECTION_ALL_ELEMENTS()
 
 
-#indexRange
-class MMSlow_index(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
 
-class MMSnumber_of_elements(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
 
 	
 #named
@@ -2312,38 +2391,7 @@ class MMSnamed_component_name(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_NAMED_COMPONENT_NAME()
 
-	
-#AlternateAccesSelection
-class MMSalternate_access_selection_select_alternate_access(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_SELECT_ALTERNATE_ACCESS(MMSselect_alternate_access_component(),
-																			MMSselect_alternate_access_index("index"),
-																			MMSselect_alternate_access_index_range(),
-																			MMSselect_alternate_access_all_elements(),
-																			ASN1F_SEQUENCE_OF(ASN1F_CHOICE("alternateAccess",
-																								MMSalternate_access_select_alternate_access(),
-																								MMSalternate_access_select_alternate_access,
-																								MMSalternate_access_component,
-																								MMSalternate_access_index,
-																								MMSalternate_access_index_range,
-																								MMSalternate_access_all_elements,
-																								MMSalternate_access_named)))
-	
-class MMSalternate_access_selection_component(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_COMPONENT()
-	
-class MMSalternate_access_selection_index(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX("index")
-	
-class MMSalternate_access_selection_index_range(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_INDEX_RANGE()
-	
-class MMSalternate_access_selection_alle_elements(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_ALLE_ELEMENTS()
+
 
 
 #selectAlternateAccess
@@ -2454,15 +2502,6 @@ class MMSfailure(ASN1_Packet):
 class MMSsuccess(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_SUCCESS()
-
-#GetVariableAccessAttributesRequest
-class MMSname(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NAME(ASN1F_CHOICE("name", 
-										MMSvmd_specific(),
-										MMSvmd_specific,
-										MMSdomain_specific,
-										MMSaa_specific))
 
 
 #GetVariableAccessAttributesResponse
@@ -2641,36 +2680,9 @@ class MMSdata_utc_time(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_DATA_UTC_TIME()
 
-	
-#VariableAccessSpecification
-class MMSvariable_access_specification_list_of_variable(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_LIST_OF_VARIABLE(ASN1F_SEQUENCE(ASN1F_CHOICE("variableSpecification",
-																												MMSname(),
-																												MMSname),
-																									MMSvariable_def_alternate_access()))
-	
-class MMSvariable_access_specification_variable_list_name(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_ACCESS_SPECIFICATION_VARIABLE_LIST_NAME(ASN1F_CHOICE("variableListName",
-																					MMSvmd_specific(),
-																					MMSvmd_specific,
-																					MMSdomain_specific,
-																					MMSaa_specific))
-	
 
-#VariableDef
-class MMSvariable_def_alternate_access(ASN1_Packet):
-	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_VARIABLE_DEF_ALTERNATE_ACCESS(ASN1F_CHOICE("alternateAccess", 
-																	MMSalternate_access_select_alternate_access(),
-																	MMSalternate_access_select_alternate_access,
-																	MMSalternate_access_component,
-																	MMSalternate_access_index,
-																	MMSalternate_access_index_range,
-																	MMSalternate_access_all_elements,
-																	MMSalternate_access_named))
-	
+
+
 
 #VariableSpecification
 class MMSname(ASN1_Packet):
