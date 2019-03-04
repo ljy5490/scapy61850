@@ -1816,11 +1816,11 @@ class ASN1F_SCATTERED_ACCESS_DESCRIPTION_ALTERNATE_ACCESS(ASN1F_SEQUENCE_OF):
 #indexRange
 class MMSlow_index(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_LOW_INDEX("lowIndex")
+	ASN1_root = ASN1F_LOW_INDEX("lowIndex", 0)
 
 class MMSnumber_of_elements(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
-	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements")
+	ASN1_root = ASN1F_NUMBER_OF_ELEMENTS("numberOfElements", 0)
 
 
 #ObjectName
@@ -1866,7 +1866,7 @@ class MMSaccess_selection_all_elements(ASN1_Packet):
 	ASN1_root = ASN1F_ACCESS_SELECTION_ALL_ELEMENTS()
 
 	
-#AlternateAccesSelection
+#AlternateAccessSelection
 class MMSalternate_access_selection_select_alternate_access(ASN1_Packet):
 	ASN1_codec = ASN1_Codecs.BER
 	ASN1_root = ASN1F_ALTERNATE_ACCESS_SELECTION_SELECT_ALTERNATE_ACCESS(MMSselect_alternate_access_component(),
@@ -2783,6 +2783,7 @@ class MMS(ASN1_Packet):
 								MMSinitiate_request_pdu,
 								MMSinitiate_response_pdu,
 								MMSinitiate_error_pdu)
+
 
 
 '''
